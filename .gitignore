@@ -1,0 +1,5 @@
+src/lexer/__pycache__/
+src/lexer/error/__pycache__/
+src/lexer/struct/__pycache__/
+test/__pycache__/
+test/lexer/__pycache__/
