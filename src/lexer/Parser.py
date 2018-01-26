@@ -24,7 +24,7 @@ class Parser():
         self.content = f.read().strip()
         f.close()
 
-    def isStateLatex():
+    def isStateLatex(self):
         """
         Returns whether the previous environment was LaTex or Python.
         """
@@ -35,18 +35,23 @@ class Parser():
         Returns a tuple contaning the detected environment and its content. Will
         eventually raise an error when reaching the end of the file.
         """
-        # TODO differenciate the moment where there is no more '<?' or '?>'
-        res = None
-        delimiter = "<?" if(self.isStateLatex()) else "?>"
-        index = self.content.find(delimiter)
-        if(index >= 0):
-            res = (self.currentEnvironment, self.content[cursor:index])
-            self.cursor = index+len(delimiter)
-            self.currentEnvironment = Environment.python if(isStateLatex) else Environment.python
-        elif(delimeter == "<?"): # and index == -1 : the remaining of the file only contains latex environment
-            res = (Environment.latex, self.content[cursor:])
-            self.currentEnvironment = Environment.latex
-            self.cursor = len(self.content)-1
-        else: # delimeter == "?>" and index == -1 : the python environment is not closed
-            raise UnclosedEnvironmentError("The Python environment openned at (x, y) is not closed.")
-        return res
+        if(self.cursor < len(self.content)-1):
+            res = None
+            delimiter = "<?" if(self.isStateLatex()) else "?>"
+            index = self.cursor+self.content[self.cursor:].find(delimiter)
+            print(self.content[self.cursor:], "- index : ", index, delimiter)
+            if(index >= 0):
+                res = (self.currentEnvironment, self.content[self.cursor:index])
+                self.cursor = index+len(delimiter)
+                self.currentEnvironment = Environment.python if(self.isStateLatex()) else Environment.latex
+            elif(delimiter == "<?"): # and index == -1 : the remaining of the file only contains latex environment
+                res = (Environment.latex, self.content[self.cursor:])
+                self.currentEnvironment = Environment.latex
+                self.cursor = len(self.content)-1
+            else: # delimeter == "?>" and index == -1 : the python environment is not closed
+                raise UnclosedEnvironmentError("The Python environment openned at (x, y) is not closed.")
+            print(res)
+            print("--")
+            return res
+        else:
+            raise EOFError()
