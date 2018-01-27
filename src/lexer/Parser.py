@@ -1,25 +1,16 @@
 from src.lexer.struct.Environment import Environment
 from src.lexer.error.UnclosedEnvironmentError import UnclosedEnvironmentError
 from src.lexer.error.PatternNotFoundError import PatternNotFoundError
+from src.fileController.FileController import FileController
 
 class Parser():
 
     """docstring for Parser."""
 
     def __init__(self, filename):
-        self.content = ""
-        self.readFile(filename)
+        self.content = FileController.read(filename)
         self.currentEnvironment = Environment.latex
         self.cursor = 0
-
-    def readFile(self, filename):
-        """
-        (private) Method that loads the content of the file given in parameter
-        into the attribut 'content' of the object Parser.
-        """
-        f = open(filename)
-        self.content = f.read().strip()
-        f.close()
 
     def isStateLatex(self):
         """
