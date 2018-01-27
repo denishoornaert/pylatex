@@ -1,3 +1,4 @@
+src/__pycache__/
 src/interpreter/__pycache__/
 src/lexer/__pycache__/
 src/lexer/Parser.pyc
