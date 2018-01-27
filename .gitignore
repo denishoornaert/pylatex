@@ -1,8 +1,10 @@
+src/interpreter/__pycache__/
 src/lexer/__pycache__/
 src/lexer/Parser.pyc
 src/lexer/error/__pycache__/
 src/lexer/struct/__pycache__/
 src/lexer/struct/Environment.pyc
 test/__pycache__/
+test/interperter/__pycache__/
 test/lexer/__pycache__/
 test/lexer/TestParser.pyc
