@@ -1,10 +1,6 @@
-import sys
-sys.path.append('struct/')
-sys.path.append('error/')
-
-from Environment import Environment
-from UnclosedEnvironmentError import UnclosedEnvironmentError
-from PatternNotFoundError import PatternNotFoundError
+from src.lexer.struct.Environment import Environment
+from src.lexer.error.UnclosedEnvironmentError import UnclosedEnvironmentError
+from src.lexer.error.PatternNotFoundError import PatternNotFoundError
 
 class Parser():
 
