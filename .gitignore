@@ -6,6 +6,7 @@ src/lexer/error/__pycache__/
 src/lexer/struct/__pycache__/
 src/lexer/struct/Environment.pyc
 test/__pycache__/
+test/__init__.pyc
 test/interpreter/__pycache__/
 test/lexer/__pycache__/
 test/lexer/TestParser.pyc
