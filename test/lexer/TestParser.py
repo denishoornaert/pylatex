@@ -7,6 +7,7 @@ sys.path.append('../../src/lexer/error/')
 
 from Parser import Parser
 from Environment import Environment
+from UnclosedEnvironmentError import UnclosedEnvironmentError
 
 class TestParser(unittest.TestCase):
 
@@ -53,13 +54,36 @@ class TestParser(unittest.TestCase):
         self.assertEqual(res, (Environment.latex, "\n\end{document}"))
 
     def test_UnclosedPythonEnvironment(self):
-        pass
+        self.parser = Parser("assets/UnclosedPythonEnvironment.tex")
+        res = self.parser.lex()
+        with self.assertRaises(UnclosedEnvironmentError):
+            res = self.parser.lex()
 
     def test_MultiplePythonEnvironments(self):
-        pass
+        self.parser = Parser("assets/MultiplePythonEnvironments.tex")
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.latex, "\documentclass[a4paper,11pt]{article}\n\\begin{document}\n\section{test}\n"))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.python, 'print("Blablablablabla...")'))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.latex, '\nSome meaningful text\n'))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.python, 'print("Almost the end...")'))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.latex, "\n\end{document}"))
 
     def test_TwoConsecutivePythonEnvironments(self):
-        pass
+        self.parser = Parser("assets/TwoConsecutivePythonEnvironments.tex")
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.latex, "\documentclass[a4paper,11pt]{article}\n\\begin{document}\n\section{test}\n"))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.python, 'print("Bla")'))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.latex, ''))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.python, 'print("Bla")'))
+        res = self.parser.lex()
+        self.assertEqual(res, (Environment.latex, "\n\end{document}"))
 
 if __name__ == '__main__':
     unittest.main()
