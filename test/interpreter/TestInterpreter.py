@@ -1,9 +1,6 @@
 import unittest
-import sys
 
-sys.path.append('../../src/interpreter/')
-
-from Interpreter import Interpreter
+from src.interpreter.Interpreter import Interpreter
 
 class TestInterpreter(unittest.TestCase):
 
