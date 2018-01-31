@@ -1,8 +1,8 @@
 import unittest
 
 from src.lexer.Parser import Parser
-from src.lexer.struct.Environment import Environment
-from src.lexer.error.UnclosedEnvironmentError import UnclosedEnvironmentError
+from src.lexer.struct import Environment
+from src.lexer.error import UnclosedEnvironmentError
 
 class TestParser(unittest.TestCase):
 
