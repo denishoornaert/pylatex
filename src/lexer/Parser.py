@@ -1,7 +1,6 @@
-from src.lexer.struct.Environment import Environment
-from src.lexer.error.UnclosedEnvironmentError import UnclosedEnvironmentError
-from src.lexer.error.PatternNotFoundError import PatternNotFoundError
-from src.fileController.FileController import FileController
+from src.lexer.struct import Environment
+from src.lexer.error import UnclosedEnvironmentError, PatternNotFoundError
+from src.fileController import FileController
 
 class Parser():
 
