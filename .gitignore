@@ -12,3 +12,5 @@ test/__init__.pyc
 test/interpreter/__pycache__/
 test/lexer/__pycache__/
 test/lexer/TestParser.pyc
+test/generator/__pycache__/
+src/session/__pycache__/
