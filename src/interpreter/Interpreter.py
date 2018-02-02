@@ -18,7 +18,8 @@ class Interpreter():
             with Interpreter.setUpIO() as s:
                 try:
                     exec(instructions)
-                    res = s.getvalue() # Return line remove
+                    res = s.getvalue() # TODO Return line remove
+                    print(res)
                 except Exception as e:
                     res = str(e)
         return res
