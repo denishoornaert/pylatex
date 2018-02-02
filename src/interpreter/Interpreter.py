@@ -3,6 +3,11 @@ from io import StringIO
 import contextlib
 import traceback
 
+# Set up the pylatex specific functions
+from src.session import SetUp
+for function in SetUp.functions:
+    exec(function)
+
 class Interpreter():
 
     """docstring for Interpreter."""
@@ -18,8 +23,7 @@ class Interpreter():
             with Interpreter.setUpIO() as s:
                 try:
                     exec(instructions)
-                    res = s.getvalue().strip()
-                    print(res)
+                    res = s.getvalue()
                 except Exception as e:
                     res = str(e)
         return res
