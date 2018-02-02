@@ -1,5 +1,5 @@
-# Definition of the functions
+def out(string):
+    print(string, end='')
 
-functions = []
-
-functions.append("def out(string):\n\tprint(string, end='')")
+def returnLineManagement(string):
+    return string.replace('\n', "\\n")

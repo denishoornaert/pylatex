@@ -18,7 +18,7 @@ class TestInterpreter(unittest.TestCase):
 
     def test_DoubleConsecutiveLineReturnStringInput(self):
         # the second '\n' is introduced bby the interpreter
-        res = Interpreter.execute('out("a\\n")')
+        res = Interpreter.execute('out("a\n")')
         self.assertEqual(res, "a\n")
 
     def test_ErrorReporting(self):

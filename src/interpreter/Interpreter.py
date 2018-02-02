@@ -4,9 +4,7 @@ import contextlib
 import traceback
 
 # Set up the pylatex specific functions
-from src.session import SetUp
-for function in SetUp.functions:
-    exec(function)
+from src.session.SetUp import *
 
 class Interpreter():
 
@@ -22,6 +20,7 @@ class Interpreter():
         if(instructions != ""):
             with Interpreter.setUpIO() as s:
                 try:
+                    instructions = returnLineManagement(instructions)
                     exec(instructions)
                     res = s.getvalue()
                 except Exception as e:
