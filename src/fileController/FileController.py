@@ -19,6 +19,6 @@ class FileController():
         (public) Method that simply writes the data given in parameter into the
         file given in parameter.
         """
-        f = open(filename)
+        f = open(filename, "w")
         f.write(data)
         f.close()
