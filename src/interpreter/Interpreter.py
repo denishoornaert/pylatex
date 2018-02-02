@@ -20,7 +20,6 @@ class Interpreter():
         if(instructions != ""):
             with Interpreter.setUpIO() as s:
                 try:
-                    instructions = returnLineManagement(instructions)
                     exec(instructions)
                     res = s.getvalue()
                 except Exception as e:
