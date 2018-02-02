@@ -6,11 +6,11 @@ class TestInterpreter(unittest.TestCase):
 
     def test_SimplePrint(self):
         res = Interpreter.execute('print("Blabla")')
-        self.assertEqual(res, "Blabla\n")
+        self.assertEqual(res, "Blabla")
 
     def test_SimpleOperationPrint(self):
         res = Interpreter.execute('print(1+2)')
-        self.assertEqual(res, "3\n")
+        self.assertEqual(res, "3")
 
     def test_EmptyStringInput(self):
         res = Interpreter.execute('')

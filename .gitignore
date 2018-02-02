@@ -1,6 +1,7 @@
 src/__pycache__/
 src/fileController/__pycache__/
 src/interpreter/__pycache__/
+src/generator/__pycache__/
 src/lexer/__pycache__/
 src/lexer/Parser.pyc
 src/lexer/error/__pycache__/
