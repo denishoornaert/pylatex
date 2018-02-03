@@ -11,3 +11,4 @@ if (__name__ == '__main__'):
         print("Are you sure that you have closed all your python environments ?")
     except Exception as e:
         print("Well... Something really unexpected happened.")
+        print("Hint : "+str(e))

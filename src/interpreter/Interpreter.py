@@ -4,11 +4,14 @@ import contextlib
 import traceback
 
 # Set up the pylatex specific functions
-from src.session.SetUp import *
+from src.session.Functions import *
 
 class Interpreter():
 
     """docstring for Interpreter."""
+
+    local = {}
+    local.setdefault('out', out)
 
     @staticmethod
     def execute(instructions):
@@ -20,8 +23,7 @@ class Interpreter():
         if(instructions != ""):
             with Interpreter.setUpIO() as s:
                 try:
-                    instructions = returnLineManagement(instructions)
-                    exec(instructions)
+                    exec(instructions, {}, Interpreter.local)
                     res = s.getvalue()
                 except Exception as e:
                     res = str(e)

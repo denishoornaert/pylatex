@@ -17,12 +17,16 @@ class TestInterpreter(unittest.TestCase):
         self.assertEqual(res, "")
 
     def test_DoubleConsecutiveLineReturnStringInput(self):
-        res = Interpreter.execute('out("a\n")')
+        res = Interpreter.execute('out("a\\n")')
         self.assertEqual(res, "a\n")
 
     def test_ErrorReporting(self):
         res = Interpreter.execute('123/0')
         self.assertEqual(res, "division by zero")
+
+    def test_multilineEnvironment(self):
+        res = Interpreter.execute('a = 42\nb = 25\nout(a-b)')
+        self.assertEqual(res, "17")
 
 if __name__ == '__main__':
     unittest.main()
