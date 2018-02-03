@@ -11,7 +11,7 @@ out("%"+str(ex))
 ?>
 
 \section{Correction exercice 1}
-
+\begin{center}
 \begin{tabular}{|c|c|c|}
 \hline
 dec & bin & hex \\
@@ -22,5 +22,6 @@ for e in ex:
     out("\hline \n")
 ?>
 \end{tabular}
+\end{center}
 
 \end{document}
