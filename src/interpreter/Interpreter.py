@@ -10,6 +10,9 @@ class Interpreter():
 
     """docstring for Interpreter."""
 
+    local = {}
+    local.setdefault('out', out)
+
     @staticmethod
     def execute(instructions):
         """
@@ -20,7 +23,7 @@ class Interpreter():
         if(instructions != ""):
             with Interpreter.setUpIO() as s:
                 try:
-                    exec(instructions)
+                    exec(instructions, {}, Interpreter.local)
                     res = s.getvalue()
                 except Exception as e:
                     res = str(e)
