@@ -36,7 +36,10 @@ class Parser():
         """
         res = None
         if(index >= 0):
-            res = (self.currentEnvironment, self.content[self.cursor:index])
+            if(self.isStateLatex()):
+                res = (Environment.latex, self.content[self.cursor:index])
+            else:
+                res = (Environment.python, self.content[self.cursor:index].strip())
             self.cursor = index+len(delimiter)
             self.currentEnvironment = Environment.python if(self.isStateLatex()) else Environment.latex
         return res
