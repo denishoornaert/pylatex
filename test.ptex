@@ -1,0 +1,26 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+
+\begin{document}
+
+<?
+ex = [12, 78, 24, 9, 152]
+out("%"+str(ex))
+?>
+
+\section{Correction exercice 1}
+
+\begin{tabular}{|c|c|c|}
+\hline
+dec & bin & hex \\
+\hline
+<?
+for e in ex:
+    out(str(e)+" & "+str(bin(e))+" & "+str(hex(e))+" \\\\ \n")
+    out("\hline \n")
+?>
+\end{tabular}
+
+\end{document}
