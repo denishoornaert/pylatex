@@ -4,7 +4,7 @@ import contextlib
 import traceback
 
 # Set up the pylatex specific functions
-from src.session.SetUp import *
+from src.session.Functions import *
 
 class Interpreter():
 
