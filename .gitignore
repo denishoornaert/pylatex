@@ -13,4 +13,9 @@ test/src/interpreter/__pycache__/
 test/src/lexer/__pycache__/
 test/src/lexer/TestParser.pyc
 test/src/generator/__pycache__/
+test/utils/__init__.pyc
+test/utils/__pycache__/
+test/utils/latex/__pycache__/
+test/__init__.pyc
+test/__pycache__/
 src/session/__pycache__/
