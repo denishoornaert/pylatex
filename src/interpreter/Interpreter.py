@@ -31,7 +31,7 @@ class Interpreter():
             with Interpreter.setUpIO() as s:
                 try:
                     instructions = Interpreter.escapeCharactersManagement(instructions)
-                    exec(instructions, {}, Interpreter.local)
+                    exec(instructions, Interpreter.local)
                     res = s.getvalue()
                 except Exception as e:
                     res = str(e)
