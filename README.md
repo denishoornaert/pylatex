@@ -19,6 +19,9 @@ The present project differs from other projects based on Python as, here, Python
 \begin{document}
 
 <?
+def reformat(string):
+    return string[2:]
+
 ex = [12, 78, 24, 9, 152]
 out("%"+str(ex))
 ?>
@@ -31,12 +34,11 @@ dec & bin & hex \\
 \hline
 <?
 for e in ex:
-    out(str(e)+" & "+str(bin(e))+" & "+str(hex(e))+" \\ \n")
+    out(str(e)+" & "+reformat(bin(e))+" & "+reformat(hex(e))+" \\ \n")
     out("\hline \n")
 ?>
 \end{tabular}
 \end{center}
 
 \end{document}
-
 ```
