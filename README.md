@@ -24,10 +24,12 @@ The '.tex' file will be located in the exact same directory that the '.ptex' fil
 \begin{document}
 
 <?
+from random import randint
+
 def reformat(string):
     return string[2:]
 
-ex = [12, 78, 24, 9, 152]
+ex = [randint(0, 128) for i in range(25)]
 out("%"+str(ex))
 ?>
 
