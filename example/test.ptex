@@ -18,7 +18,7 @@ dec & bin & hex \\
 \hline
 <?
 for e in ex:
-    out(str(e)+" & "+str(bin(e))+" & "+str(hex(e))+" \\\\ \n")
+    out(str(e)+" & "+str(bin(e))+" & "+str(hex(e))+" \\ \n")
     out("\hline \n")
 ?>
 \end{tabular}
