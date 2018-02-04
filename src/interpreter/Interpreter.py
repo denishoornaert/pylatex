@@ -2,6 +2,7 @@ import sys
 from io import StringIO
 import contextlib
 import traceback
+import re
 
 # Set up the pylatex specific functions
 from src.session.Functions import *
@@ -14,6 +15,12 @@ class Interpreter():
     local.setdefault('out', out)
 
     @staticmethod
+    def escapeCharactersManagement(string):
+        # Replaces '\\' by '\\\\'
+        string = re.sub(r'"(.*)\\\\(.*)"', r'"\1\\\\\\\\\2"', string)
+        return string
+
+    @staticmethod
     def execute(instructions):
         """
         (static public) Evaluates the python code given in parameter and return
@@ -23,6 +30,7 @@ class Interpreter():
         if(instructions != ""):
             with Interpreter.setUpIO() as s:
                 try:
+                    instructions = Interpreter.escapeCharactersManagement(instructions)
                     exec(instructions, {}, Interpreter.local)
                     res = s.getvalue()
                 except Exception as e:
