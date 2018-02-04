@@ -7,8 +7,6 @@ The present PyLaTeX aims to ease the redaction of LaTeX documents based on data 
 * generation of historic (academic transcript, ...)
 * generation of assignment correction (see example below)
 
-The present project differs from other projects based on Python as, here, Python is embedded a LaTeX file whereas, in the other projects such as [JelteF/PyLaTeX](https://github.com/JelteF/PyLaTeX), Python is directly used to generate all the LaTeX document.
-
 ## Example
 ```latex
 \documentclass[a4paper,11pt]{article}
