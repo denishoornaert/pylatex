@@ -19,3 +19,5 @@ test/utils/latex/__pycache__/
 test/__init__.pyc
 test/__pycache__/
 src/session/__pycache__/
+utils/latex/__pycache__/
+utils/__pycache__/
