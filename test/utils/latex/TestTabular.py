@@ -23,16 +23,23 @@ class TestTabular(unittest.TestCase):
         with self.assertRaises(TypeError):
             tabular = Tabular(matrix)
 
-    # TODO adapt
-    def test_notAnArrayOfArraysTabularConstruction(self):
-        matrix = [j for j in range(3)]
-        with self.assertRaises(TypeError):
-            tabular = Tabular(matrix)
+    def test_arrayTabularConstruction(self):
+        matrix = [0, 1, 2]
+        tabular = Tabular(matrix)
+        res = tabular.__latex__()
+        answer = "\\begin{tabular}{|c|}\n\t\\hline\n\t 0 \\\\ \n\t\\hline\n\t 1 \\\\ \n\t\\hline\n\t 2 \\\\ \n\t\\hline\n\\end{tabular}\n"
+        self.assertEqual(res, answer)
 
-    # TODO test with rectangular matrix
     def test_completeRectangularMatrix(self):
-        pass
+        matrix = [[i*j for j in range(2)] for i in range(3)]
+        tabular = Tabular(matrix)
+        res = tabular.__latex__()
+        answer = "\\begin{tabular}{|c|c|}\n\t\\hline\n\t 0 & 0 \\\\ \n\t\\hline\n\t 0 & 1 \\\\ \n\t\\hline\n\t 0 & 2 \\\\ \n\t\\hline\n\\end{tabular}\n"
+        self.assertEqual(res, answer)
 
-    # TODO
     def test_notAllElementAreArrays(self):
-        pass
+        matrix = [1, [1, 1], [1, 2, 1]]
+        tabular = Tabular(matrix)
+        res = tabular.__latex__()
+        answer = "\\begin{tabular}{|c|}\n\t\\hline\n\t 1 \\\\ \n\t\\hline\n\t [1, 1] \\\\ \n\t\\hline\n\t [1, 2, 1] \\\\ \n\t\\hline\n\\end{tabular}\n"
+        self.assertEqual(res, answer)

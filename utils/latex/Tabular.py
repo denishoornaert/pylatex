@@ -5,6 +5,7 @@ class Tabular():
     def __init__(self, array):
         if(type(array) == list):
             self.array = array
+            self.oneliner = False
             self.rowSize = self.getMaxRowSize()
             self.columnSize = len(self.array)
         else:
@@ -19,7 +20,9 @@ class Tabular():
         the given array is also an array. If it is not the case, the result is 1
         """
         res = 1
-        if(all([type(elem) == list for elem in self.array])):
+        # all elements of the array are arrays
+        self.oneliner = not all([type(elem) == list for elem in self.array])
+        if(not self.oneliner):
             rowsSize = []
             for row in self.array:
                 rowsSize.append(len(row))
@@ -34,13 +37,17 @@ class Tabular():
 
     def generateBody(self):
         res = ""
-        for row in range(self.rowSize):
-            for col in range(self.columnSize):
-                try:
-                    res += str(self.array[row][col])
-                except IndexError as e:
-                    res += " "
-                res += " \\\\ \n" if(col==self.rowSize-1) else " & "
+        for row in range(self.columnSize):
+            if(self.oneliner):
+                res += str(self.array[row])
+                res += " \\\\ \n"
+            else:
+                for col in range(self.rowSize):
+                    try:
+                        res += str(self.array[row][col])
+                    except IndexError as e:
+                        res += " "
+                    res += " \\\\ \n" if(col==self.rowSize-1) else " & "
             res += "\t\\hline\n"
             res += "" if(row==len(self.array)-1) else "\t "
         return res
