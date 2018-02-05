@@ -21,7 +21,7 @@ out("%"+str(ex))
 \begin{center}
 <?
 tabular = Tabular(res)
-out(tabular.__latex__())
+out(tabular)
 ?>
 \end{center}
 
