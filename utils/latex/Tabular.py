@@ -54,36 +54,62 @@ class Tabular():
         """
         return "\\end{tabular}\n"
 
-    def generateBody(self):
-        """
-        (private) Genrates the middle part of the table.
-        """
+    def getSeperator(self, row=None):
+        res = "\t\\hline\n"
+        if(row != None):
+            res += "" if(row==self.columnSize-1) else "\t "
+        return res
+
+    def getNextCharacters(self, index):
+        return " \\\\ \n" if(index == self.rowSize-1) else " & "
+
+    def getCellFiller(self, data, col, row=None):
+        res = ""
+        try:
+            # TODO replace str() by __latex__() ?
+            res += str(data[col]) if(row == None) else str(data[row][col])
+        except IndexError as e:
+            res += " "
+        res += self.getNextCharacters(col)
+        return res
+
+    def headerConstruction(self):
         res = ""
         if(self.header != None):
             if(self.sideColumn != None):
                 res += " "+" & "
             for col in range(self.rowSize):
-                try:
-                    res += str(self.header[col])
-                except IndexError as e:
-                    res += " "
-                res += " \\\\ \n" if(col==self.rowSize-1) else " & "
-            res += "\t\\hline\n\t "
+                res += self.getCellFiller(self.header, col)
+            res += self.getSeperator()+"\t "
+        return res
+
+    def onelinerConstruction(self):
+        res = ""
         for row in range(self.columnSize):
-            if(self.oneliner):
-                res += str(self.array[row])
-                res += " \\\\ \n"
-            else:
-                if(self.sideColumn != None):
-                    res += self.sideColumn[row]+" & "
-                for col in range(self.rowSize):
-                    try:
-                        res += str(self.array[row][col])
-                    except IndexError as e:
-                        res += " "
-                    res += " \\\\ \n" if(col==self.rowSize-1) else " & "
-            res += "\t\\hline\n"
-            res += "" if(row==self.columnSize-1) else "\t "
+            res += str(self.array[row])
+            res += " \\\\ \n"
+            res += self.getSeperator(row)
+        return res
+
+    def tableConstruction(self):
+        res = ""
+        for row in range(self.columnSize):
+            if(self.sideColumn != None):
+                res += self.sideColumn[row]+" & "
+            for col in range(self.rowSize):
+                res += self.getCellFiller(self.array, col, row)
+            res += self.getSeperator(row)
+        return res
+
+    def generateBody(self):
+        """
+        (private) Genrates the middle part of the table.
+        """
+        res  = self.headerConstruction()
+        if(self.oneliner):
+            res += self.onelinerConstruction()
+        else:
+            res += self.tableConstruction()
         return res
 
     def __latex__(self):
