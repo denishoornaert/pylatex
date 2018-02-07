@@ -74,6 +74,7 @@ out("%"+str(ex))
 \begin{center}
 <?
 tabular = Tabular(res)
+tabular.setHeader(["dec", "bin", "hex"])
 out(tabular)
 ?>
 \end{center}
