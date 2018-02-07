@@ -5,7 +5,7 @@ from src.fileController import FileController
 
 class TestInterpreter(unittest.TestCase):
 
-    path = "test/interpreter/assets/"
+    path = "test/src/interpreter/assets/"
     ext  = ".txt"
 
     def test_SimplePrint(self):

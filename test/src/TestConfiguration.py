@@ -2,7 +2,7 @@ class TestConfiguration():
 
     """docstring for TestConfiguration."""
 
-    latexTestFilePath = "test/assets/"
+    latexTestFilePath = "test/src/assets/"
 
     pylatexExtension = ".ptex"
 
