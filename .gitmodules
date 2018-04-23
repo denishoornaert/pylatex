@@ -1,0 +1,3 @@
+[submodule "pythonInjector"]
+	path = pythonInjector
+	url = https://github.com/denishoornaert/python-injector
