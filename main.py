@@ -1,6 +1,6 @@
 import sys
-from src.generator import Generator
-from src.lexer.error import UnclosedEnvironmentError
+from pythonInjector.src.generator import Generator
+from pythonInjector.src.lexer.error import UnclosedEnvironmentError
 
 if (__name__ == '__main__'):
     try:
