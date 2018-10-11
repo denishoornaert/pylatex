@@ -66,7 +66,7 @@ class Tabular():
     def getCellFiller(self, data, col, row=None):
         res = ""
         try:
-            # TODO replace str() by __latex__() ?
+            # TODO replace str() by __out__() ?
             res += str(data[col]) if(row == None) else str(data[row][col])
         except IndexError as e:
             res += " "
@@ -112,7 +112,7 @@ class Tabular():
             res += self.tableConstruction()
         return res
 
-    def __latex__(self):
+    def __out__(self):
         res  = self.generateHeader()
         res += self.generateBody()
         res += self.generateFooter()
